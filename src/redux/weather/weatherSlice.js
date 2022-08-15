@@ -9,7 +9,7 @@ export const getWeatherData = createAsyncThunk(
     let coordinates;
     if (typeof args[0] === "string") {
       const res = await axios.get(
-        `http://api.openweathermap.org/geo/3.0/direct?q=${args[0].toLocaleLowerCase(
+        `http://api.openweathermap.org/geo/2.5/direct?q=${args[0].toLocaleLowerCase(
           "en-US"
         )}&limit=5&appid=${process.env.REACT_APP_API_KEY}`
       );
