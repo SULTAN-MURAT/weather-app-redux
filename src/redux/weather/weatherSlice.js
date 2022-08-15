@@ -9,7 +9,7 @@ export const getWeatherData = createAsyncThunk(
     let coordinates;
     if (typeof args[0] === "string") {
       const res = await axios.get(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${args[0].toLocaleLowerCase(
+        `http://api.openweathermap.org/geo/3.0/direct?q=${args[0].toLocaleLowerCase(
           "en-US"
         )}&limit=5&appid=${process.env.REACT_APP_API_KEY}`
       );
@@ -18,7 +18,7 @@ export const getWeatherData = createAsyncThunk(
       coordinates = args[0];
     }
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates[0].lat}&lon=${coordinates[0].lon}&units=metric&exclude=minutely,hourly&appid=${process.env.REACT_APP_API_KEY}`
+      `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates[0].lat}&lon=${coordinates[0].lon}&units=metric&exclude=minutely,hourly&appid=${process.env.REACT_APP_API_KEY}`
     );
 
     return {
